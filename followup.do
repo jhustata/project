@@ -34,7 +34,7 @@ To download and save the public-use LMFs to your hard drive, follow these steps:
 */
 
 di "What is your work directory?" _request(workdir)
-cd ${workdir}
+cd "$workdir"
 
 //cd "C:\PUBLIC USE DATA"    // SET DIRECTORY WHERE DATA ARE LOCATED, E.G. "C:\PUBLIC USE DATA"
 global SURVEY NHANES_1999_2000     // REPLACE <SURVEY> WITH RELEVANT SURVEY NAME (IN ALL CAPS)
