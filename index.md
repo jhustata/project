@@ -16,6 +16,8 @@
                - Mortality-linkage
                - ESRD-linkage    
 
+link to [other](hardcoded.md) page
+
 ## Data
 - On local Dell Computers running on Windows OS
 - There is an intranet, but no internet connection
