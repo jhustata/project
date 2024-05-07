@@ -33,11 +33,15 @@ To download and save the public-use LMFs to your hard drive, follow these steps:
 		 and the data file is saved as "<SURVEY>_MORT_2019_PUBLIC.DAT". 
 */
 
-di "What is your work directory?" _request(workdir)
-cd "$workdir"
+//di "What is your work directory?" _request(workdir)
+//cd "$workdir"
 
 //cd "C:\PUBLIC USE DATA"    // SET DIRECTORY WHERE DATA ARE LOCATED, E.G. "C:\PUBLIC USE DATA"
 global SURVEY NHANES_1999_2000     // REPLACE <SURVEY> WITH RELEVANT SURVEY NAME (IN ALL CAPS)
+//the above scripts deal with a local file
+//i've edited to work remotely, as we've learned in stata II
+global mort "https://ftp.cdc.gov/pub/HEALTH_STATISTICS/NCHS/datalinkage/linked_mortality/"
+global repo "https://github.com/jhustata/intermediate/raw/main/"
 * example syntax: 
 * global SURVEY NHIS_2018
 * or
@@ -68,7 +72,10 @@ label define ucodfmt 10 "All other causes (residual)"                           
 label define ucodfmt .z "Ineligible, under age 18, assumed alive, or no cause of death data"      , add
 
 // READ IN THE FIXED-WIDTH FORMAT ASCII PUBLIC-USE LMF
-infix str publicid 1-14 eligstat 15 mortstat 16 ucod_leading 17-19 diabetes 20 hyperten 21 dodqtr 22 dodyear 23-26 wgt_new 27-34 sa_wgt_new 35-42 using ${SURVEY}_MORT_2019_PUBLIC.dat	
+//infix str publicid 1-14 eligstat 15 mortstat 16 ucod_leading 17-19 diabetes 20 hyperten 21 dodqtr 22 dodyear 23-26 wgt_new 27-34 sa_wgt_new 35-42 using ${SURVEY}_MORT_2019_PUBLIC.dat	
+
+//let read in the ASCII PUBLIC-USE from the CDC/NCHS website instead of downloading it locally 
+infix str publicid 1-14 eligstat 15 mortstat 16 ucod_leading 17-19 diabetes 20 hyperten 21 dodqtr 22 dodyear 23-26 wgt_new 27-34 sa_wgt_new 35-42 using ${mort}NHANES_1999_2000_MORT_2019_PUBLIC.dat
 
 
 // REPLACE MISSING VALUES TO .z FOR LABELING
