@@ -41,7 +41,7 @@ global SURVEY NHANES_1999_2000     // REPLACE <SURVEY> WITH RELEVANT SURVEY NAME
 //the above scripts deal with a local file
 //i've edited to work remotely, as we've learned in stata II
 global mort "https://ftp.cdc.gov/pub/HEALTH_STATISTICS/NCHS/datalinkage/linked_mortality/"
-global repo "https://github.com/jhustata/intermediate/raw/main/"
+global repo "https://github.com/jhustata/project/raw/main/"
 * example syntax: 
 * global SURVEY NHIS_2018
 * or
