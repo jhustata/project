@@ -37,6 +37,8 @@ link to [other](hardcoded.md) page
       - So no privacy, confidentiality or HIPAA risks 
 
 ## Code   
+- Down and edit this `.do` file, accounting for the correct directory/filepath (i.e., your project repo)
+- You'll rename the updated `.do` file `followup.do`
 - `https://ftp.cdc.gov/pub/HEALTH_STATISTICS/NCHS/datalinkage/linked_mortality/Stata_ReadInProgramAllSurveys.do`
 - Merge with NHANES survey
 
