@@ -5,8 +5,7 @@
 </p>
 
 <p align="center">
-         <a href="data.md"> Data</a>&nbsp | <a href="code.md"> Code</a>&nbsp | <a href="parameters.md"> Parameters</a>&nbsp | <a href="inferences.md"> Inferences</a>&nbsp | <a href="updates.md"> Updates</a>&nbsp | <a href="transparency.md"> Transparency</a>&nbsp
-<br>
+  
+[Data](data.md) | [Code](code.md) | [Parameters](parameters.md) | [Inferences](inferences.md) | [Updates](updates.md) | [Transparency](transparency.md)
 
----
-
+</p>
