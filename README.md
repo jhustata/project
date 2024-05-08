@@ -1,9 +1,14 @@
 
-                              1. Data
-                                     \
-                          2. Code -> 4. Inferences -> 5. Updates -> 6. Transparency 
-                                     /
-                                      3. Parameters
+
+<p align="center">
+  <img src="https://jhustata.github.io/intermediate/_images/bd7156ffdc732b3095dad1da740b099ae999597c4cb8154a81a988a589e43517.png" width="400"/>
+</p>
+
+<p align="center">
+         <a href="https://huggingface.co/meta-Llama"> Data</a>&nbsp | <a href="https://ai.meta.com/blog/"> Code</a>&nbsp | <a href="https://llama.meta.com/"> Parameters</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Inferences</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Updates</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Transparency</a>&nbsp
+<br>
+
+---
 
 
 # Hypothetical Case
