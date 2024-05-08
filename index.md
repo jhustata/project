@@ -6,3 +6,4 @@
  [Data](data.md) | [Code](code.md) | [Parameters](parameters.md) | [Inferences](inferences.md) | [Updates](updates.md) | [Transparency](transparency.md)
 
  
+[Staight out of Stata!!](dyndoc.html)
