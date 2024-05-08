@@ -1,7 +1,7 @@
 <<dd_version: 2>>     
 <<dd_include: header.txt>>
 
-# Straight out of Stata
+# STRAIGHT OUTTA STATA
 
 ![](https://m.media-amazon.com/images/M/MV5BMTA5MzkyMzIxNjJeQTJeQWpwZ15BbWU4MDU0MDk0OTUx._V1_FMjpg_UX1000_.jpg)
 
