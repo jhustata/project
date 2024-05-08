@@ -10,25 +10,3 @@
 
 ---
 
-
-
-
-
-
-## Parameters
-- Self-reported health
-- Age
-- Sex
-- Race
-- Ethnicity
-  
-## Inferences
-- 95%CI
-- p-values
-
-## Updates
-- Expand from 1999 to 2005
-
-## Transparency
-- Show all your work in one `.do` file script
-- Have donors as a parallel?
