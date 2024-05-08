@@ -13,9 +13,7 @@
 
 
 
-## Code   
-- `https://ftp.cdc.gov/pub/HEALTH_STATISTICS/NCHS/datalinkage/linked_mortality/Stata_ReadInProgramAllSurveys.do`
-- Merge with NHANES survey
+
 
 ## Parameters
 - Self-reported health
