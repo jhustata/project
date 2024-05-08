@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-         <a href="https://huggingface.co/meta-Llama"> Data</a>&nbsp | <a href="https://ai.meta.com/blog/"> Code</a>&nbsp | <a href="https://llama.meta.com/"> Parameters</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Inferences</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Updates</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Transparency</a>&nbsp
+         <a href="data.md"> Data</a>&nbsp | <a href="https://ai.meta.com/blog/"> Code</a>&nbsp | <a href="https://llama.meta.com/"> Parameters</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Inferences</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Updates</a>&nbsp | <a href="https://llama.meta.com/get-started/"> Transparency</a>&nbsp
 <br>
 
 ---
