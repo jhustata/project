@@ -17,7 +17,7 @@ $$
 \end{bmatrix}
 $$
 
-And the variance-covariance matrix for the errors $\epsilon_i$ in the model is typically denoted as $\sigma^2 \times I$, where $ \sigma^2$ is the variance of the errors and $I$ is the identity matrix. The variance-covariance matrix for the errors is:
+And the variance-covariance matrix for the errors $\epsilon_i$ in the model is typically denoted as $\sigma^2\times I$, where $\sigma^2$ is the variance of the errors and $I$ is the identity matrix. The variance-covariance matrix for the errors is:
 
 $$
 \begin{bmatrix}
