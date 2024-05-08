@@ -1,3 +1,9 @@
 # Target
 # Source
+- [NCHS](https://ftp.cdc.gov/pub/)
+   - HEALTH_STATISTICS
+      - NCHS
+         - datalinkage
+            - linked_mortality
+               - NHANES_1999_2000_MORT_2019_PUBLIC.dat
 # Enumerated
