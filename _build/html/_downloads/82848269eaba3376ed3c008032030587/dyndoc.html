@@ -1,0 +1,86 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="stmarkdown.css">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+<h1><a href="#straight-outta-stata" id="straight-outta-stata">STRAIGHT OUTTA STATA</a></h1>
+<p><img src="https://m.media-amazon.com/images/M/MV5BMTA5MzkyMzIxNjJeQTJeQWpwZ15BbWU4MDU0MDk0OTUx._V1_FMjpg_UX1000_.jpg" alt="" /></p>
+<pre><code>. cls 
+
+. //1. data
+. global repo &quot;https://github.com/jhustata/project/raw/main/&quot;
+
+. global nhanes &quot;https://wwwn.cdc.gov/Nchs/Nhanes/&quot;
+
+. 
+. //2. code
+. do ${repo}followup.do
+
+. save followup, replace 
+
+. import sasxport5 &quot;${nhanes}1999-2000/DEMO.XPT&quot;, clear
+
+. merge 1:1 seqn using followup, nogen
+
+. save survey_followup, replace 
+
+. 
+. //3. parameters
+. import sasxport5 &quot;${nhanes}1999-2000/HUQ.XPT&quot;, clear
+
+. tab huq010 
+
+. merge 1:1 seqn using survey_followup, nogen keep(matched)
+
+. rm followup.dta
+
+. rm survey_followup.dta
+
+. g years=permth_int/12
+
+. stset years, fail(mortstat)
+
+. replace huq010=. if huq010==9
+
+. label define huq 1 &quot;Excellent&quot; 2 &quot;Very Good&quot; 3 &quot;Good&quot; 4 &quot;Fair&quot; 5 &quot;Poor&quot;
+
+. label values huq010 huq 
+
+. levelsof huq010, local(numlevels)
+
+. local i=1
+
+. foreach l of numlist `numlevels' {
+
+. save week7, replace 
+
+. sts graph, ///
+&gt;     by(huq010) ///
+&gt;         fail ///
+&gt;         per(100) ///
+&gt;         ylab(0(20)80 , ///
+&gt;             format(%2.0f) ///
+&gt;         ) ///
+&gt;         xlab(0(5)20) ///
+&gt;         tmax(20) ///
+&gt;         ti(&quot;Self-Reported Health and Mortality&quot;) ///
+&gt;         legend( ///
+&gt;             order(5 4 3 2 1) ///
+&gt;                 lab(1 &quot;$legend1&quot;) ///
+&gt;                 lab(2 &quot;$legend2&quot;) ///
+&gt;                 lab(3 &quot;$legend3&quot;) ///
+&gt;                 lab(4 &quot;$legend4&quot;) ///
+&gt;                 lab(5 &quot;$legend5&quot;) ///
+&gt;                 ring(0) pos(11) ///
+&gt;         )
+
+. graph export nonpara.png, replace 
+
+. 
+
+</code></pre>
+<p><img src="Graph3.svg" ></p>

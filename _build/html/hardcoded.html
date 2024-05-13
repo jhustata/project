@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6 Nested, Hierarchical, Multilevel, Longitudinal Data &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hardcoded';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fhardcoded.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/hardcoded.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>6 Nested, Hierarchical, Multilevel, Longitudinal Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpt-4-session">GPT-4 Session:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">6.1 <code class="docutils literal notranslate"><span class="pre">isid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-i-d"><code class="docutils literal notranslate"><span class="pre">i.i.d.</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collapse">6.2 <code class="docutils literal notranslate"><span class="pre">collapse</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egen">6.3 <code class="docutils literal notranslate"><span class="pre">egen</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preserve-restore">6.4 <code class="docutils literal notranslate"><span class="pre">preserve</span></code>, <code class="docutils literal notranslate"><span class="pre">restore</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">6.5 <code class="docutils literal notranslate"><span class="pre">merge</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape">6.6 <code class="docutils literal notranslate"><span class="pre">reshape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">6.8 Lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">6.9 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-isid">6.1 Understanding <code class="docutils literal notranslate"><span class="pre">isid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independently-and-identically-distributed-data-i-i-d">Independently and Identically Distributed Data (i.i.d.)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-concept-of-collapse">6.2 The Concept of <code class="docutils literal notranslate"><span class="pre">collapse</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-egen">6.3 Use of <code class="docutils literal notranslate"><span class="pre">egen</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-integrity-with-preserve-and-restore">6.4 Data Integrity with <code class="docutils literal notranslate"><span class="pre">preserve</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-data-with-merge">6.5 Combining Data with <code class="docutils literal notranslate"><span class="pre">merge</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flexible-data-structures-with-reshape">6.6 Flexible Data Structures with <code class="docutils literal notranslate"><span class="pre">reshape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-session">6.8 Lab Session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.9 Homework</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="nested-hierarchical-multilevel-longitudinal-data">
+<h1>6 Nested, Hierarchical, Multilevel, Longitudinal Data<a class="headerlink" href="#nested-hierarchical-multilevel-longitudinal-data" title="Permalink to this heading">#</a></h1>
+<Details>
+   <Summary>Debugging</Summary>
+<p>Before diving into nested data, let’s visit the concept of <a class="reference external" href="https://jhustata.github.io/basic/lab5.html#settings">debugging</a> with a simple example from Lab 5 last week.</p>
+<p>There’s no perfect time to introduce this topic, but many of you have likely experienced the frustration of encountering an error when running a script—whether it’s your own or one shared with you—and not being able to pinpoint the issue.</p>
+</Details>
+<Details>
+   <Summary>Hardcoding</Summary>
+<p>Let’s briefly <a class="reference external" href="https://jhustata.github.io/basic/chapter5.html">revisit Week 5</a>: Review of Weeks 1 - 4</p>
+<p>View the script we used to guide our review:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">cat</span> https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>basic<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span>review<span class="m">.</span>do
+</pre></div>
+</div>
+<p>Run the script to see its output:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> https:<span class="o">//</span>github<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>basic<span class="o">/</span>raw<span class="o">/</span>main<span class="o">/</span>review<span class="m">.</span>do
+</pre></div>
+</div>
+<p>This script creates output into a <code class="docutils literal notranslate"><span class="pre">.log</span></code> file. But HW5 asks you to additionally direct output into a <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> file. How may we adapt the script to this purpose? Yes, this is the key question of HW5. Many of you may have missed a tip for <a class="reference external" href="https://jhustata.github.io/basic/chapter3.html#common-mistakes-from-hw1">HW3</a> that recommended “hardcoding” as a template – a starting place. You may then gradually replace the hardcoded stuff with appropriate macros.</p>
+<p>Hardcoding as a firststep. In this example:</p>
+<ol class="arabic simple">
+<li><p>We use the <code class="docutils literal notranslate"><span class="pre">ds</span></code> command, <code class="docutils literal notranslate"><span class="pre">not(type</span> <span class="pre">string)</span></code> option, and <code class="docutils literal notranslate"><span class="pre">levelsof</span></code>. These were only briefly mentioned in class, but were further discussed in <a class="reference external" href="https://jhustata.github.io/basic/lab5.html#foreach-n-of-numlist">Lab 5 Section 2.2</a></p></li>
+<li><p>Nested loops and conditional code-blocks (e.g. <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">r(r)</span> <span class="pre">==</span> <span class="pre">2</span></code>) can be very empowering!</p></li>
+<li><p>Gradually <strong>update</strong> your <code class="docutils literal notranslate"><span class="pre">.do</span></code> file script to replace hardcoded stuff (e.g. <code class="docutils literal notranslate"><span class="pre">catlab</span></code>), or stuff that isn’t publication worthy (e.g. <code class="docutils literal notranslate"><span class="pre">v</span></code>, which in this example is a variable name) with more appropriate macros or variable labels</p></li>
+<li><p>The HW5 solution will walk you through such a process</p></li>
+<li><p>Copy and paste your <code class="docutils literal notranslate"><span class="pre">.do</span></code> file script into a program. And adapt it to a more general purpose, beyond any specific dataset or variables</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+	cls
+<span class="k">	use</span> <span class="vg">${repo}</span>transplants,<span class="k"> clear</span>
+<span class="k">    ds</span>, not(type string)  
+<span class="k">	global</span> threshold <span class="m">9</span>  
+	putexcel<span class="k"> set levelsof</span>,<span class="k"> replace</span> 
+<span class="k">	local</span> row=<span class="m">2</span>
+<span class="k">    foreach</span> v of<span class="k"> varlist</span> <span class="nv">`r(varlist)&#39;</span> {
+<span class="k">	    levelsof</span> <span class="nv">`v&#39;</span>,<span class="k"> local</span>(numlevels)
+<span class="k">	    if</span> <span class="nf">r</span>(r) <span class="o">==</span> <span class="m">2</span> {  
+			putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;per&quot;</span>)
+<span class="k">			local</span> row = <span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>
+	    }
+<span class="k">	    else if</span> <span class="nf">inrange</span>(<span class="nv">`r(r)&#39;</span>, <span class="m">3</span>, <span class="vg">$threshold</span>) {  
+			putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">, %&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;&quot;</span>)
+<span class="k">			foreach l</span> of<span class="k"> numlist</span> <span class="nv">`numlevels&#39;</span> {
+<span class="k">				local</span> row = <span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>
+                putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;    catlab&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;per&quot;</span>)
+			}	
+	    }
+<span class="k">	    else</span> {  
+			putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;m_iqr&quot;</span>)
+<span class="k">			local</span> row = <span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>
+	    }
+		
+    }
+	
+}
+</pre></div>
+</div>
+<section id="gpt-4-session">
+<h2>GPT-4 Session:<a class="headerlink" href="#gpt-4-session" title="Permalink to this heading">#</a></h2>
+<p><strong>User:</strong> help add comments/annotation [paste the above script into ChatGPTs prompt]</p>
+<p><strong>ChatGPT:</strong> Sure, I can help you add comments and annotations to your Stata code to make it more understandable. Here’s your code with comments explaining each part:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {  <span class="c1">// Quietly execute the following block of code</span>
+    cls  <span class="c1">// Clear the screen</span>
+<span class="k">    use</span> <span class="vg">${repo}</span>transplants,<span class="k"> clear</span>  <span class="c1">// Load dataset from specified repository and clear any previous data in memory</span>
+<span class="k">    ds</span>, not(type string)  <span class="c1">// List all variables that are not of string type</span>
+<span class="k">    global</span> threshold <span class="m">9</span>  <span class="c1">// Set a global threshold value of 9</span>
+    putexcel<span class="k"> set levelsof</span>,<span class="k"> replace</span>  <span class="c1">// Set the Excel file for output with the name &#39;levelsof&#39;, replace if exists</span>
+<span class="k">    local</span> row=<span class="m">2</span>  <span class="c1">// Initialize row variable for Excel output starting at row 2</span>
+
+<span class="k">    foreach</span> v of<span class="k"> varlist</span> <span class="nv">`r(varlist)&#39;</span> {  <span class="c1">// Loop over the variables listed by the previous &#39;ds&#39; command</span>
+<span class="k">        levelsof</span> <span class="nv">`v&#39;</span>,<span class="k"> local</span>(numlevels)  <span class="c1">// Get the levels of each variable and store them in local &#39;numlevels&#39;</span>
+<span class="k">        if</span> <span class="nf">r</span>(r) <span class="o">==</span> <span class="m">2</span> {  <span class="c1">// If there are exactly two levels for the variable</span>
+            putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;per&quot;</span>)  <span class="c1">// Write variable name in column A and &#39;per&#39; in column B of Excel</span>
+<span class="k">            local</span> row = <span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>  <span class="c1">// Increment the Excel row counter</span>
+        }
+<span class="k">        else if</span> <span class="nf">inrange</span>(<span class="nv">`r(r)&#39;</span>, <span class="m">3</span>, <span class="vg">$threshold</span>) {  <span class="c1">// If the number of levels is between 3 and the threshold</span>
+            putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">, %&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;&quot;</span>)  <span class="c1">// Write variable name with a percent sign in column A, leave column B empty</span>
+<span class="k">            foreach l</span> of<span class="k"> numlist</span> <span class="nv">`numlevels&#39;</span> {  <span class="c1">// Loop through each level of the variable</span>
+<span class="k">                local</span> row = <span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>  <span class="c1">// Increment row before writing</span>
+                putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;    catlab&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;per&quot;</span>)  <span class="c1">// Indent &#39;catlab&#39; in column A, write &#39;per&#39; in column B</span>
+            }   
+        }
+<span class="k">        else</span> {  <span class="c1">// If the number of levels exceeds the threshold</span>
+            putexcel A<span class="nv">`row&#39;</span> = (<span class="s">&quot;</span><span class="nv">`v&#39;</span><span class="s">&quot;</span>) B<span class="nv">`row&#39;</span> = (<span class="s">&quot;m_iqr&quot;</span>)  <span class="c1">// Write variable name in column A and &#39;m_iqr&#39; in column B</span>
+<span class="k">            local</span> row = <span class="nv">`row&#39;</span> <span class="o">+</span> <span class="m">1</span>  <span class="c1">// Increment the row counter</span>
+        }
+    }
+}
+</pre></div>
+</div>
+<p>In this script, you’re using a combination of <code class="docutils literal notranslate"><span class="pre">putexcel</span></code> commands and conditional logic to format and export information about variable levels from Stata to an Excel file. This can be very useful for data review and verification processes.</p>
+</Details>
+</section>
+<section id="isid">
+<h2>6.1 <code class="docutils literal notranslate"><span class="pre">isid</span></code><a class="headerlink" href="#isid" title="Permalink to this heading">#</a></h2>
+<p>Enough with <code class="docutils literal notranslate"><span class="pre">levelsof</span></code>. While this powerful command investigates levels within a variable, this weeks focus will shift towards levels within a dataset:</p>
+<ul class="simple">
+<li><p>Visits</p></li>
+<li><p>Patient</p></li>
+<li><p>Hospital</p></li>
+<li><p>Region</p></li>
+</ul>
+<section id="i-i-d">
+<h3><code class="docutils literal notranslate"><span class="pre">i.i.d.</span></code><a class="headerlink" href="#i-i-d" title="Permalink to this heading">#</a></h3>
+<p>Classical statistics assumes each observation is <a class="reference external" href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables#:~:text=In%20probability%20theory%20and%20statistics,i.i.d.%2C%20iid%2C%20or%20IID.">independently sampled and identically distributed</a></p>
+<p>Nested, multilevel, longitudinal, or hierarchical data (these terms are variations on a theme) violate this assumption. And we are going to discuss how to manipulate data to generate group-level statistics, which are often of interest in a <strong>public</strong> health setting.</p>
+<p>Individual-level variables are more important to <strong>clinical</strong> medicine, which also deals with hierarchical data over time. A patient or care provider is concerned, not about their status 20 years ago, or last year, but today, and, more important, <a class="reference external" href="https://en.wikipedia.org/wiki/Tomorrow_and_tomorrow_and_tomorrow">tomorrow and tomorrow and tomorrow</a>! Some would call that a “time-series”. The unit of analysis becomes the person-time rather than the person.</p>
+<p>The topic is beyond the scope of this class, as mentioned at the outset in our <a class="reference external" href="https://jhustata.github.io/basic/chapter1.html#know-be-reverent">philosophy</a>. But we’ll give you tools with which to recognize hierarchical data and manipulate them to suit your analytic purposes.</p>
+</section>
+</section>
+<section id="collapse">
+<h2>6.2 <code class="docutils literal notranslate"><span class="pre">collapse</span></code><a class="headerlink" href="#collapse" title="Permalink to this heading">#</a></h2>
+<p>All analyses are an attempt at <a class="reference external" href="https://en.wikipedia.org/wiki/Dimensionality_reduction#:~:text=Dimensionality%20reduction%2C%20or%20dimension%20reduction,close%20to%20its%20intrinsic%20dimension.">dimentionality reduction</a>. When you describe “the average age”, or “median blood pressre”, or “count (i.e., <code class="docutils literal notranslate"><span class="pre">N</span></code>)” you are reducing the dimensions of your data (i.e., <code class="docutils literal notranslate"><span class="pre">c(N)</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">c(k)</span></code>) to one or a few numbers.</p>
+<p>That one or those few numbers are then used as “representative” of the group. One way to think of such a “group mean” or “group average” is to think of the negative connotations that come with “a group stereotype”. Individuals from that group may consider it an injustice to be defined by the “group-average” rather than their own average.</p>
+<p>But even an individual may consider it an injustice to be defined by their past, when that represented but a stage in their ever-evolving persona.</p>
+<p>It is within this spirit that I hope you appreciate just how an observation or individual can be nested within a larger group of observations.</p>
+<p><a class="reference external" href="https://www.ahajournals.org/doi/full/10.1161/HYPERTENSIONAHA.113.01275?utm_version=158565909">White coat hypertension</a> is a classical example. It may fit the <a class="reference external" href="https://www.icd10data.com/ICD10CM/Codes/R00-R99/R00-R09/R03-/R03.0#:~:text=2024%20ICD%2D10%2DCM%20Diagnosis,reading%2C%20without%20diagnosis%20of%20hypertension">ICD-10-CM Diagnosis Code R03. 0: Elevated blood-pressure reading, without diagnosis of hypertension</a>. Yet there is no consensus as to the importance of that specific <code class="docutils literal notranslate"><span class="pre">person-time</span></code></p>
+<p>So always ask yourself whenever you are doing an analysis: is this hierchical data? Or was it initially hierarchical, but was collapsed for convenience of analysis?</p>
+<p>Human beings have a powerful, incurable urge for dimentionality reduction. Your task is to take into consideration the biases introduced by this process, the variances eroded by homogenious statistics, and the threats to valid statistical, clinical, and public health inferences.</p>
+</section>
+<section id="egen">
+<h2>6.3 <code class="docutils literal notranslate"><span class="pre">egen</span></code><a class="headerlink" href="#egen" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="preserve-restore">
+<h2>6.4 <code class="docutils literal notranslate"><span class="pre">preserve</span></code>, <code class="docutils literal notranslate"><span class="pre">restore</span></code><a class="headerlink" href="#preserve-restore" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="merge">
+<h2>6.5 <code class="docutils literal notranslate"><span class="pre">merge</span></code><a class="headerlink" href="#merge" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="reshape">
+<h2>6.6 <code class="docutils literal notranslate"><span class="pre">reshape</span></code><a class="headerlink" href="#reshape" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="lab">
+<h2>6.8 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="homework">
+<h2>6.9 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
+<p>For your Jupyter Book notes on nested, hierarchical, multilevel, and longitudinal data, I suggest adding detailed explanations and practical examples to deepen students’ understanding. Below is an expanded version of your existing notes with added content, structured annotations, and explanations tailored for each section. This should make it easier for your students to follow along and grasp the complex concepts presented.</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Week 6: Nested, Hierarchical, Multilevel, Longitudinal Data</span>
+
+<span class="gu">## Introduction to Debugging</span>
+&lt;details&gt;
+&lt;summary&gt;Click to expand!&lt;/summary&gt;
+
+Before diving into nested data, let&#39;s revisit the concept of debugging with a simple example from Lab 5 last week.
+
+There’s no perfect time to introduce this topic, but many of you have likely experienced the frustration of encountering an error when running a script—whether it&#39;s your own or one shared with you—and not being able to pinpoint the issue. Understanding debugging early on will aid in handling complex data structures more efficiently.
+
+Refer to the detailed debugging steps here: [<span class="nt">Lab 5 Debugging Section</span>](<span class="na">https://jhustata.github.io/basic/lab5.html#settings</span>)
+
+&lt;/details&gt;
+
+<span class="gu">## Revisiting Hardcoding</span>
+&lt;details&gt;
+&lt;summary&gt;Click to expand!&lt;/summary&gt;
+
+Last week, we reviewed the basics from Weeks 1 to 4. Let&#39;s look at the script we used and discuss how it can be adapted for different outputs, moving from <span class="sb">`.log`</span> files to <span class="sb">`.xlsx`</span> files.
+
+Review the script here: [<span class="nt">Week 5 Review</span>](<span class="na">https://jhustata.github.io/basic/chapter5.html</span>)
+
+```stata
+cat https://github.com/jhustata/basic/raw/main/review.do
+do https://github.com/jhustata/basic/raw/main/review.do
+</pre></div>
+</div>
+<p>Hardcoding can be a useful starting point, but it’s essential to evolve your scripts to be dynamic and adaptable to different datasets and requirements. This involves using macros and avoiding fixed variable names or parameters wherever possible.</p>
+<p>Example adaptations for homework and further discussion are included in HW5, which emphasizes replacing hardcoded components with flexible code suited for publication-quality outputs.</p>
+</details>
+</section>
+<section id="understanding-isid">
+<h2>6.1 Understanding <code class="docutils literal notranslate"><span class="pre">isid</span></code><a class="headerlink" href="#understanding-isid" title="Permalink to this heading">#</a></h2>
+<p>Moving away from <code class="docutils literal notranslate"><span class="pre">levelsof</span></code>, we focus on understanding how data is structured within datasets. This week’s themes revolve around different levels of data:</p>
+<ul class="simple">
+<li><p>Visits</p></li>
+<li><p>Patient</p></li>
+<li><p>Hospital</p></li>
+<li><p>Region</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">isid</span></code> command is crucial for ensuring data integrity and understanding the unique identifiers across these levels.</p>
+</section>
+<section id="independently-and-identically-distributed-data-i-i-d">
+<h2>Independently and Identically Distributed Data (i.i.d.)<a class="headerlink" href="#independently-and-identically-distributed-data-i-i-d" title="Permalink to this heading">#</a></h2>
+<p>Classical statistics often assumes each observation is independently and identically distributed (i.i.d.). However, nested and multilevel data often violate this assumption, necessitating different analytical approaches.</p>
+<p>Explore the i.i.d. assumption in detail here: <a class="reference external" href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">i.i.d. in Statistics</a></p>
+</section>
+<section id="the-concept-of-collapse">
+<h2>6.2 The Concept of <code class="docutils literal notranslate"><span class="pre">collapse</span></code><a class="headerlink" href="#the-concept-of-collapse" title="Permalink to this heading">#</a></h2>
+<p>When you describe aggregates like the average age or median blood pressure, you’re reducing the dimensionality of your data. This simplification, while useful, can sometimes obscure the nuances of individual data points or subgroups.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">collapse</span></code> command in Stata helps in reducing data dimensions to essential summaries, but it’s crucial to be aware of the biases this might introduce, especially in hierarchical data settings.</p>
+</section>
+<section id="use-of-egen">
+<h2>6.3 Use of <code class="docutils literal notranslate"><span class="pre">egen</span></code><a class="headerlink" href="#use-of-egen" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">egen</span></code> command is incredibly powerful for creating complex summaries and transformations across grouped data. We’ll explore several practical examples of <code class="docutils literal notranslate"><span class="pre">egen</span></code> to handle multilevel data efficiently.</p>
+</section>
+<section id="data-integrity-with-preserve-and-restore">
+<h2>6.4 Data Integrity with <code class="docutils literal notranslate"><span class="pre">preserve</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code><a class="headerlink" href="#data-integrity-with-preserve-and-restore" title="Permalink to this heading">#</a></h2>
+<p>Understanding how to safely manipulate datasets without losing original data is critical. The <code class="docutils literal notranslate"><span class="pre">preserve</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code> commands allow for temporary changes to the data, ensuring that the original structure and content are not permanently altered.</p>
+</section>
+<section id="combining-data-with-merge">
+<h2>6.5 Combining Data with <code class="docutils literal notranslate"><span class="pre">merge</span></code><a class="headerlink" href="#combining-data-with-merge" title="Permalink to this heading">#</a></h2>
+<p>Merging datasets is a common task in data analysis, especially when dealing with longitudinal or multilevel data. We will cover best practices and common pitfalls in merging datasets from different sources or time points.</p>
+</section>
+<section id="flexible-data-structures-with-reshape">
+<h2>6.6 Flexible Data Structures with <code class="docutils literal notranslate"><span class="pre">reshape</span></code><a class="headerlink" href="#flexible-data-structures-with-reshape" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">reshape</span></code> command allows for switching between wide and long formats, which is particularly useful in longitudinal studies where time-point data may need to be restructured for analysis.</p>
+</section>
+<section id="lab-session">
+<h2>6.8 Lab Session<a class="headerlink" href="#lab-session" title="Permalink to this heading">#</a></h2>
+<p>This week’s lab will involve hands-on exercises using real datasets to apply the concepts learned about nested and hierarchical data.</p>
+</section>
+<section id="id1">
+<h2>6.9 Homework<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Homework will focus on practical applications of <code class="docutils literal notranslate"><span class="pre">merge</span></code>, <code class="docutils literal notranslate"><span class="pre">collapse</span></code>, and <code class="docutils literal notranslate"><span class="pre">reshape</span></code>, challenging students to manipulate and analyze a provided dataset with hierarchical structures.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpt-4-session">GPT-4 Session:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isid">6.1 <code class="docutils literal notranslate"><span class="pre">isid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-i-d"><code class="docutils literal notranslate"><span class="pre">i.i.d.</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collapse">6.2 <code class="docutils literal notranslate"><span class="pre">collapse</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egen">6.3 <code class="docutils literal notranslate"><span class="pre">egen</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preserve-restore">6.4 <code class="docutils literal notranslate"><span class="pre">preserve</span></code>, <code class="docutils literal notranslate"><span class="pre">restore</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">6.5 <code class="docutils literal notranslate"><span class="pre">merge</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape">6.6 <code class="docutils literal notranslate"><span class="pre">reshape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">6.8 Lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">6.9 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-isid">6.1 Understanding <code class="docutils literal notranslate"><span class="pre">isid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independently-and-identically-distributed-data-i-i-d">Independently and Identically Distributed Data (i.i.d.)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-concept-of-collapse">6.2 The Concept of <code class="docutils literal notranslate"><span class="pre">collapse</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-egen">6.3 Use of <code class="docutils literal notranslate"><span class="pre">egen</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-integrity-with-preserve-and-restore">6.4 Data Integrity with <code class="docutils literal notranslate"><span class="pre">preserve</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-data-with-merge">6.5 Combining Data with <code class="docutils literal notranslate"><span class="pre">merge</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flexible-data-structures-with-reshape">6.6 Flexible Data Structures with <code class="docutils literal notranslate"><span class="pre">reshape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-session">6.8 Lab Session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.9 Homework</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
