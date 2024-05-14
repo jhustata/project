@@ -1,5 +1,5 @@
 # Complete transparency with zero disclosure risk 
-- [WebApp](https://abikesa.github.io/quickdeploy/)
+- [WebApp](https://jhustata.github.io/quickdeploy/)
 - Input avaiable in public repo on GitHub
   
 ### Minimizing disclosure risk
