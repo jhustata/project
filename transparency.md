@@ -3,9 +3,9 @@
 - Input avaiable in public repo on GitHub
   
 ### Minimizing disclosure risk
-- Original dataset had this granularity $9000\times \4$
+- Original dataset had this granularity $9000 \times \4$
 - Including individuals observations
-- But the WebApp only includes $5\times \1$
+- But the WebApp only includes $5 \times \1$
 - That represents "dimensionality" reduction
 - Have we lost any important information?
 
