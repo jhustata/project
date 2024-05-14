@@ -1,4 +1,4 @@
-*Real artist ship -- Steve Jobs*
+*Real artists ship -- Steve Jobs*
 
 # 1
 
