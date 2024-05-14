@@ -11,6 +11,6 @@
          - datalinkage
             - linked_mortality
                - `NHANES_1999_2000_MORT_2019_PUBLIC.dat`
-               -  
+                 
 ### Enumerated Population   
 - Continuous NHANES: 1999-2000
