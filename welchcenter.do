@@ -6,6 +6,8 @@ qui {
     noi di "What is your work directory?" _request(workdir)
     cd $workdir
     capture mkdir demo
+    /*--- lets go with the "Classic" Stata color scheme */
+    set scheme s2color 
 
     // 1. data
     global repo "https://github.com/jhustata/project/raw/main/"
