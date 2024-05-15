@@ -3,7 +3,7 @@ cls
 
 qui {
     // 0. settings
-    noi di "What is your work directory?" _request(wordir)
+    noi di "What is your work directory?" _request(workdir)
     cd $workdir
     mkdir demo
 
@@ -50,9 +50,9 @@ qui {
         ylab(0(20)80, format(%2.0f))  
         xlab(0(5)20)  
         tmax(20)  
-        ti("Self-Reported Health and Mortality, %")  
-		yti("")
-		xti("Years Since Interview")
+        ti("Self-Reported Health and Mortality")  
+		yti("%")
+		xti("Years")
         legend(order(5 4 3 2 1)  
                lab(1 "$legend1")  
                lab(2 "$legend2")  
