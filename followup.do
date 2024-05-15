@@ -121,7 +121,7 @@ tab1 eligstat mortstat ucod_leading diabetes hyperten dodqtr dodyear, missing
  
 // SAVE DATA FILE IN DIRECTORY DESIGNATED AT TOP OF PROGRAM AS **SURVEY**_PUF.DTA
 // replace option allows Stata to overwrite an existing .dta file
-save ${SURVEY}_PUF , replace
+save demo/${SURVEY}_PUF , replace
 
 
 ******************
