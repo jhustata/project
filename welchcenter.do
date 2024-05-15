@@ -51,6 +51,8 @@ qui {
         xlab(0(5)20)  
         tmax(20)  
         ti("Self-Reported Health and Mortality")  
+		yti("%")
+		xti("Years")
         legend(order(5 4 3 2 1)  
                lab(1 "$legend1")  
                lab(2 "$legend2")  
