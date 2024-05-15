@@ -50,7 +50,7 @@ qui {
         ylab(0(20)80, format(%2.0f))  
         xlab(0(5)20)  
         tmax(20)  
-        ti("Self-Reported Health and Mortality, %")  
+        ti("Self-Reported Health and 20-Year Mortality, %")  
 		yti("")
 		xti("Years")
         legend(order(5 4 3 2 1)  
