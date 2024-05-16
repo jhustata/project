@@ -1,37 +1,18 @@
-/*******************************************************************************
-* May 2022
 
-**	PUBLIC-USE LINKED MORTALITY FOLLOW-UP THROUGH DECEMBER 31, 2019 **
+/*
 
-* 	The following Stata code can be used to read the fixed-width format ASCII 
-*	public-use Linked Mortality Files (LMFs) from a stored location into a 
-*	Stata dataset.  Basic frequencies are also produced.  
- 
-	
-NOTE:	The format definitions given below will result in procedure output 
-		showing values that have been grouped as they are shown in the file layout
-		documentation.
+6.2 Code Development:
+Edit and Rename Provided Script:
+Download, modify, and upload the provided Stata .do file for linking the DEMO.XPT data to mortality follow-up data. 
+Rename this file to followup.do and commit it with the description: “Updated DEMO.XPT linkage .do file”. 
+In otherwords, download, modify, and upload Stata_ReadInProgramAllSurveys.do. 
+You may watch the week 6 video for the key items to edit. 
+For instance, you may edit it so that it reads in the data directly from the website.
 
-		
-To download and save the public-use LMFs to your hard drive, follow these steps:
+Instruction from: https://jhustata.github.io/intermediate/chapter6.html#code-development
 
-*Step 1: Designate a folder on your hard drive to download the public-use LMF. 
-		 In this example, the data will be saved to: 'C:\PUBLIC USE DATA'
-
-*Step 2: To download the public-use LMF, go to the web site: 
-	     https://ftp.cdc.gov/pub/health_statistics/nchs/datalinkage/linked_mortality/.
-
-         Right click on the desired survey link and select "Save target as...".  
-		 A "Save As" screen will appear where you will need to select and input 
-		 a location where to save the data file on your hard drive.  
-
-         Also note that the "Save as type:" box should read "DAT File (*.dat)".  
-		 This will ensure that the data file is saved to your hard drive in the 
-		 correct format.  
-
-         In this example, the data file is saved in the folder, "C:\PUBLIC USE DATA", 
-		 and the data file is saved as "<SURVEY>_MORT_2019_PUBLIC.DAT". 
 */
+
 
 //di "What is your work directory?" _request(workdir)
 //cd "$workdir"
@@ -121,7 +102,11 @@ tab1 eligstat mortstat ucod_leading diabetes hyperten dodqtr dodyear, missing
  
 // SAVE DATA FILE IN DIRECTORY DESIGNATED AT TOP OF PROGRAM AS **SURVEY**_PUF.DTA
 // replace option allows Stata to overwrite an existing .dta file
-save demo/${SURVEY}_PUF , replace
+/*
+- I briefly changed the line below to "save demo/${SURVEY}_PUF, replace"
+- Then discovered that students were using MY followup.do instead of their own!!!
+*/
+save ${SURVEY}_PUF , replace
 
 
 ******************
